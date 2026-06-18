@@ -1,0 +1,451 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* =========================================
+   1. RESET E VARIÁVEIS (Tema Finanças)
+========================================= */
+:root {
+    --bg-color: #f4f7f6;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --primary-color: #059669; 
+    --primary-hover: #047857;
+    --header-bg: #ffffff;
+    --border-color: #e2e8f0;
+    --danger-color: #ef4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* =========================================
+   2. HEADER E NAVEGAÇÃO (Comum em todas as páginas)
+========================================= */
+header {
+    background-color: var(--header-bg);
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+.btn-home {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.btn-home:hover {
+    color: var(--primary-color);
+}
+
+.menu-container {
+    position: relative;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-main);
+}
+
+#menu {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: var(--header-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+    overflow: hidden;
+}
+
+#menu.menu-oculto {
+    display: none;
+}
+
+#menu a {
+    text-decoration: none;
+    color: var(--text-main);
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+}
+
+#menu a:hover {
+    background-color: #f1f5f9;
+    color: var(--primary-color);
+}
+
+#menu hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 5px 0;
+}
+
+/* =========================================
+   3. ESTRUTURA BASE (MAIN)
+========================================= */
+main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--text-main);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 40px 0;
+}
+
+/* =========================================
+   4. INDEX (Vitrine de Análises)
+========================================= */
+#lista-artigos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 25px;
+}
+
+.card-artigo {
+    background-color: var(--header-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-artigo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+    border-color: rgba(5, 150, 105, 0.3);
+}
+
+.card-artigo h3 {
+    font-size: 1.3rem;
+    color: var(--text-main);
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.card-artigo p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.card-artigo .btn-ler {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #f1f5f9;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.card-artigo .btn-ler:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+/* =========================================
+   5. ADMIN (Formulário do CMS)
+========================================= */
+#form-artigo {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+#form-artigo input,
+#form-artigo textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#form-artigo textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+#form-artigo input:focus,
+#form-artigo textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+}
+
+button[type="submit"], #btn-cancelar {
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"] {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--primary-hover);
+}
+
+#btn-cancelar {
+    background-color: var(--danger-color);
+    color: #ffffff;
+    margin-top: -5px;
+}
+
+#btn-cancelar:hover {
+    background-color: #dc2626;
+}
+
+#btn-cancelar[hidden] {
+    display: none;
+}
+
+#lista-admin {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.card-admin {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-admin strong {
+    display: block;
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.card-admin span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.card-admin-acoes {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.card-admin-acoes button {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    transition: background-color 0.2s;
+}
+
+.card-admin-acoes button:hover {
+    background-color: var(--primary-hover);
+}
+
+.card-admin-acoes .btn-excluir {
+    background-color: var(--danger-color);
+}
+
+.card-admin-acoes .btn-excluir:hover {
+    background-color: #dc2626;
+}
+
+/* =========================================
+   7. LOGIN E CADASTRO
+========================================= */
+.login-container {
+    max-width: 360px;
+    margin: 80px auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-container h2 {
+    margin-bottom: 5px;
+    border-bottom: none;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-container input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+}
+
+.login-container button {
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+    background-color: var(--primary-hover);
+}
+
+.login-container p {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.login-container p a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-container p a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================
+   6. ARTIGOS (Modo de Leitura)
+========================================= */
+#conteudo-artigo {
+    background-color: var(--header-bg);
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    margin-bottom: 40px;
+}
+
+#conteudo-artigo h1 {
+    font-size: 2.2rem;
+    color: var(--text-main);
+    margin-bottom: 15px;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+#conteudo-artigo h3, 
+#conteudo-artigo .resumo {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-bottom: 30px;
+    padding-left: 15px;
+    border-left: 4px solid var(--primary-color);
+    line-height: 1.6;
+}
+
+#conteudo-artigo p {
+    font-size: 1.1rem;
+    color: #334155;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+#conteudo-artigo .autor,
+#conteudo-artigo small {
+    display: block;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 600px) {
+    #conteudo-artigo {
+        padding: 25px 20px;
+    }
+    
+    #conteudo-artigo h1 {
+        font-size: 1.8rem;
+    }
+}

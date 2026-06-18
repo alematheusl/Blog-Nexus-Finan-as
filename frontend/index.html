@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Finanças</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="btn-home">Home</a>
+        <span class="logo">Nexus <span>Finanças</span></span>
+        <div class="menu-container">
+            <button class="menu-toggle" onclick="toggleMenu()">&#9776;</button>
+            <nav id="menu" class="menu-oculto">
+                <a href="index.html">Home</a>
+                <a href="admin.html" id="link-admin" style="display: none;">Publicar</a>
+                <hr>
+                <a href="login.html" class="btn-login">Login</a>
+                <a href="cadastro.html" class="btn-cadastro">Cadastrar</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h2>Últimas Análises</h2>
+        <div id="lista-artigos"></div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/blog.js"></script>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('menu-oculto');
+        }
+    </script>
+</body>
+</html>

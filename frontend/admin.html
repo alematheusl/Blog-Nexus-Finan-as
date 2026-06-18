@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Finanças - Admin</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="btn-home">Home</a>
+        <span class="logo">Nexus <span>Finanças</span></span>
+        <div class="menu-container">
+            <button class="menu-toggle" onclick="toggleMenu()">&#9776;</button>
+            <nav id="menu" class="menu-oculto">
+                <a href="index.html">Home</a>
+                <a href="admin.html" id="link-admin">Publicar</a>
+                <hr>
+                <a href="login.html" class="btn-login">Login</a>
+                <a href="cadastro.html" class="btn-cadastro">Cadastrar</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h2>Gerenciar Artigos</h2>
+
+        <form id="form-artigo">
+            <input type="text" id="titulo" placeholder="Título" required>
+            <input type="text" id="resumo" placeholder="Resumo" required>
+            <textarea id="conteudo" placeholder="Conteúdo" required></textarea>
+            <input type="text" id="autor" placeholder="Autor" required>
+            <input type="file" id="imagem" accept="image/*">
+            <button type="submit">Salvar Artigo</button>
+            <button type="button" id="btn-cancelar" hidden>Cancelar Edição</button>
+        </form>
+
+        <hr>
+        <h2>Artigos Cadastrados</h2>
+        <div id="lista-admin"></div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/admin.js"></script>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('menu-oculto');
+        }
+    </script>
+</body>
+</html>

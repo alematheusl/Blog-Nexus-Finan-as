@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Finanças - Criar Conta</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Criar Conta</h2>
+
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="senha" placeholder="Senha">
+
+        <button onclick="cadastrar()">Cadastrar</button>
+
+        <p>Já tem conta? <a href="login.html">Faça login</a></p>
+    </div>
+
+    <script>
+        async function cadastrar() {
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+
+            if (!email || !senha) {
+                alert("Preencha todos os campos!");
+                return;
+            }
+
+            const dados = { email, senha };
+
+            try {
+                const resposta = await fetch('http://localhost:8080/auth/cadastrar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(dados)
+                });
+
+                if (resposta.ok) {
+                    alert("Cadastro realizado com sucesso!");
+                    window.location.href = "login.html";
+                } else {
+                    const mensagemErro = await resposta.text();
+                    alert("Erro ao cadastrar: " + mensagemErro);
+                }
+            } catch (error) {
+                console.error("Erro na requisição:", error);
+                alert("Não foi possível conectar ao servidor. Verifique se o backend está rodando na porta 8080.");
+            }
+        }
+    </script>
+</body>
+</html>

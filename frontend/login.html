@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Finanças - Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Login</h2>
+
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="senha" placeholder="Senha">
+
+        <button onclick="entrar()">Entrar</button>
+
+        <p>Não tem conta? <a href="cadastro.html">Cadastre-se aqui</a></p>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script>
+        async function entrar() {
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+
+            if (!email || !senha) {
+                alert("Preencha todos os campos!");
+                return;
+            }
+
+            const dados = { email, senha };
+
+            try {
+                const resposta = await fetch('http://localhost:8080/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(dados)
+                });
+
+                if (resposta.ok) {
+                    const autorizado = await resposta.json();
+                    if (autorizado === true) {
+                        localStorage.setItem('logado', 'true');
+                        window.location.href = 'admin.html';
+                    } else {
+                        alert("E-mail ou senha incorretos!");
+                    }
+                } else {
+                    alert("Erro ao conectar ao servidor.");
+                }
+            } catch (error) {
+                console.error("Erro:", error);
+                alert("Falha na comunicação com o servidor. Verifique se o backend está rodando na porta 8080.");
+            }
+        }
+    </script>
+</body>
+</html>
